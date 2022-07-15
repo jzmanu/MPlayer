@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 # GoogleTest
 add_subdirectory(3rdparty/googletest)
-include_directories(3rdparty/googletest/include)
+include_directories(3rdparty/googletest/googletest/include)
 
 add_executable(MPlayer main.cpp)
 
