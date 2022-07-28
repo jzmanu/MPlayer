@@ -14,3 +14,9 @@ function(link_ffmpeg_library target)
             swresample
             swscale)
 endfunction()
+
+# spdLog
+add_subdirectory(./3rdparty/spdlog)
+function(link_spdlog_library target)
+    target_link_libraries(${target} spdlog)
+endfunction()

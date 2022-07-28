@@ -8,6 +8,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/vendor.cmake)
 
 # 添加三方库头文件的依赖
 list(APPEND MPLAYER_INCLUDES ${ffmpeg_dir}/include)
+list(APPEND MPLAYER_INCLUDES ${third_party_dir}/include)
 
 # SDK 的源文件
 file(GLOB_RECURSE MPLAYER_SRC src/*.*)
@@ -25,7 +26,7 @@ link_ffmpeg_directory()
 #add_executable(MTEST ${MPLAYER_SRC})
 link_ffmpeg_library(MPlayer)
 #link_ffmpeg_library(MTEST)
-
+link_spdlog_library(MPlayer)
 
 # GoogleTest
 add_subdirectory(./3rdparty/googletest)
@@ -36,7 +37,9 @@ set(MPlayer_TEST_INCLUDES 3rdparty/googletest/googletest 3rdparty/googletest/goo
 file(GLOB_RECURSE MPlayer_TEST_FILES
         test/*.*
         test/src/googletest/*.*
-        test/src/ffmpeg_test/*.*)
+        test/src/ffmpeg_test/*.*
+        test/src/spdlog/*.*
+        )
 # SDK头文件添加到测试的头文件里面
 list(APPEND MPlayer_TEST_INCLUDES ${MPLAYER_INCLUDES})
 
