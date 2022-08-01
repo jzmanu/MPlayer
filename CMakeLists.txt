@@ -6,12 +6,18 @@ set(CMAKE_CXX_STANDARD 11)
 include(${CMAKE_CURRENT_SOURCE_DIR}/config.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/vendor.cmake)
 
+# SDK的头文件
+set(MPLAYER_INCLUDES ./ src)
+
 # 添加三方库头文件的依赖
 list(APPEND MPLAYER_INCLUDES ${ffmpeg_dir}/include)
 list(APPEND MPLAYER_INCLUDES ${third_party_dir}/include)
 
-# SDK 的源文件
-file(GLOB_RECURSE MPLAYER_SRC src/*.*)
+# SDK的源文件
+file(GLOB_RECURSE MPLAYER_SRC
+        src/*.*
+        src/utils/*.*
+        )
 
 # 编译SDK的静态库
 add_library(MPlayer STATIC ${MPLAYER_SRC})

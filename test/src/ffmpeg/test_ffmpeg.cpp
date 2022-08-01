@@ -2,6 +2,7 @@
  * 测试ffmpeg
  */
 #include "gtest/gtest.h"
+#include "utils/Log.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,9 +17,9 @@ namespace mplayer {
     TEST(mplayer_test, ffmpeg_config_test) {
         int version = avformat_version();
         ASSERT_GT(version, 0);
-        cout << "version:" << version << endl;
+        LOG_INFO("avformat version : {}", version);
         const char *config = avformat_configuration();
         ASSERT_TRUE(config);
-        cout << "config:" << config << endl;
+        LOG_INFO("avformat config : {}", config);
     }
 }
